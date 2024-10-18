@@ -1,0 +1,47 @@
+import java.util.Scanner;
+public class RuleBasedChatbot {
+public static void main(String[] args) {
+Scanner scanner = new Scanner(System.in);
+System.out.println("Chatbot: Hello! How can I assist you today?");
+while (true) {
+String userInput = scanner.nextLine();
+if (userInput.equalsIgnoreCase("hello")) {
+System.out.println("Chatbot: Hi there!");
+} else if (userInput.equalsIgnoreCase("how are you?")) {
+System.out.println("Chatbot: I'm good, thank you. How about you?");
+} else if (userInput.equalsIgnoreCase("bye")) {
+System.out.println("Chatbot: Goodbye! Have a great day!");
+break;
+} else {
+System.out.println("Chatbot: Sorry, I didn't understand that.");
+}
+}
+scanner.close();
+}
+}
+
+
+
+
+import random
+GREETING_RESPONSE = ["hi", "hello", "hey"]
+FARWELL_RESPONSE = ["bye", "goodbye,"]
+COMPLIMENT_RESPONSE = ["thankyou", "great job, thanks for the compliment"]
+DEFAULT_RESPONSE = ["sorry, i dont understand"]
+def generate_response(user_input):
+user_input = user_input.lower()
+if user_input in GREETING_RESPONSE: return random.choice (GREETING_RESPONSE)
+elif user_input in FARWELL_RESPONSE:
+return random.choice (FARWELL_RESPONSE)
+elif user_input in COMPLIMENT_RESPONSE:
+return random.choice (COMPLIMENT_RESPONSE)
+else:
+return random.choice (DEFAULT_RESPONSE)
+print("hi, I am chat bot")
+while True:
+user_input = input("you: ")
+response = generate_response (user_input)
+if user_input == "end":
+print("nice to talk to you")
+break
+print("Bot: "+ response)
