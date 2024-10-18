@@ -24,24 +24,41 @@ scanner.close();
 
 
 import random
+
 GREETING_RESPONSE = ["hi", "hello", "hey"]
-FARWELL_RESPONSE = ["bye", "goodbye,"]
-COMPLIMENT_RESPONSE = ["thankyou", "great job, thanks for the compliment"]
-DEFAULT_RESPONSE = ["sorry, i dont understand"]
+FARWELL_RESPONSE = ["bye", "goodbye"]
+COMPLIMENT_RESPONSE = ["thank you", "great job, thanks for the compliment"]
+DEFAULT_RESPONSE = ["sorry, I don't understand"]
+
 def generate_response(user_input):
-user_input = user_input.lower()
-if user_input in GREETING_RESPONSE: return random.choice (GREETING_RESPONSE)
-elif user_input in FARWELL_RESPONSE:
-return random.choice (FARWELL_RESPONSE)
-elif user_input in COMPLIMENT_RESPONSE:
-return random.choice (COMPLIMENT_RESPONSE)
-else:
-return random.choice (DEFAULT_RESPONSE)
-print("hi, I am chat bot")
+    user_input = user_input.lower()
+    
+   
+    if any(greet in user_input for greet in GREETING_RESPONSE):
+        return random.choice(GREETING_RESPONSE)
+    
+   
+    elif any(farewell in user_input for farewell in FARWELL_RESPONSE):
+        return random.choice(FARWELL_RESPONSE)
+    
+   
+    elif any(compliment in user_input for compliment in COMPLIMENT_RESPONSE):
+        return random.choice(COMPLIMENT_RESPONSE)
+    
+    
+    else:
+        return random.choice(DEFAULT_RESPONSE)
+
+print("Hi, I am a chatbot.")
 while True:
-user_input = input("you: ")
-response = generate_response (user_input)
-if user_input == "end":
-print("nice to talk to you")
-break
-print("Bot: "+ response)
+    user_input = input("You: ")
+    
+    
+    if user_input.lower() == "end":
+        print("Nice to talk to you!")
+        break
+    
+    
+    response = generate_response(user_input)
+    print("Bot: " + response)
+
